@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>name</key>
+    <string>OpenSees Input</string>
+    <key>scopeName</key>
+    <string>source.opensees</string>
+    <key>fileTypes</key>
+    <array>
+        <string>tcl</string>
+    </array>
+    <key>foldingStartMarker</key>
+    <string></string>
+    <key>foldingStopMarker</key>
+    <string></string>
+    <key>patterns</key>
+    <array>
+        <dict>
+            <key>include</key>
+            <string>source.tcl</string>
+        </dict>
+    </array>
+    <key>uuid</key>
+    <string>C8B007C5-D4EC-48B0-AEC6-ACCF1DA71DC1</string>
+</dict>
+</plist>
