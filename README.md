@@ -1,6 +1,10 @@
 # OpenSees
 
-OpenSees is a simple plug-in for Sublime Text adding syntax highlighting, code completion, snippets, build commands, etc for the [OpenSees][opensees] extension language of [Tcl][tcl] (.tcl).
+OpenSees is a simple plug-in for Sublime Text adding syntax highlighting for the [OpenSees][opensees] extension language of [Tcl][tcl] (.tcl).
+
+## Features
+
+- Support for OpenSees syntax, in addition to Tcl syntax (using default Tcl package)
 
 ## Installation
 
