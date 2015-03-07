@@ -5,7 +5,7 @@
     <key>name</key>
     <string>Comments</string>
     <key>scope</key>
-    <string>source.opensees</string>
+    <string>source.tcl.opensees</string>
     <key>settings</key>
     <dict>
         <key>shellVariables</key>

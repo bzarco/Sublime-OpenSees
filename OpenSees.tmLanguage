@@ -5,7 +5,7 @@
     <key>name</key>
     <string>OpenSees Input</string>
     <key>scopeName</key>
-    <string>source.opensees</string>
+    <string>source.tcl.opensees</string>
     <key>fileTypes</key>
     <array>
         <string>tcl</string>
@@ -38,7 +38,7 @@
                 <key>1</key>
                 <dict>
                     <key>name</key>
-                    <string>keyword.command.tcl</string>
+                    <string>keyword.command.tcl.opensees</string>
                 </dict>
             </dict>
             <key>match</key>
@@ -51,7 +51,7 @@
                 <key>1</key>
                 <dict>
                     <key>name</key>
-                    <string>keyword.subcommand.tcl</string>
+                    <string>keyword.subcommand.tcl.opensees</string>
                 </dict>
             </dict>
             <key>match</key>
