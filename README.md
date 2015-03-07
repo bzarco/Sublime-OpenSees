@@ -6,6 +6,8 @@ OpenSees is a simple plug-in for Sublime Text adding syntax highlighting, code c
 
 - [Features](#features)
 - [Installation](#installation)
+- [Updating](#updating)
+- [Support](#support)
 - [License](#license)
 
 ## Features
@@ -29,6 +31,16 @@ For all Sublime Text users it is recommend to install via [Package Control][pack
 2. Browse up a folder and then into the `Installed Packages/` folder
 3. Download [zip package][zipPackage], rename it to `OpenSees.sublime-package` and copy it into the `Installed Packages/` directory
 4. Restart Sublime Text
+
+## Updating
+
+- If you are using Package Control, updating will be automatic and you don't have to worry about it.
+- If using Manual Install, repeat steps [above](#manual-install) and replace `OpenSees.sublime-package` with the new downloaded one.
+
+## Support
+
+- Any bug or feature request should be reported [here][issues].
+- You are welcome to fork and submit pull requests.
 
 ## License
 
@@ -62,3 +74,4 @@ THE SOFTWARE.
 [packageControl]: https://packagecontrol.io "Package Control"
 [packageControlInstallation]: https://packagecontrol.io "Package Control Installation"
 [zipPackage]: https://github.com/bzarco/Sublime-OpenSees/archive/master.zip "Zip Package"
+[issues]: https://github.com/bzarco/Sublime-OpenSees/issues "Issues"
