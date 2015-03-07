@@ -18,9 +18,46 @@
     <array>
         <dict>
             <key>include</key>
+            <string>#commands</string>
+        </dict>
+        <dict>
+            <key>include</key>
+            <string>#subcommands</string>
+        </dict>
+        <dict>
+            <key>include</key>
             <string>source.tcl</string>
         </dict>
     </array>
+    <key>repository</key>
+    <dict>
+        <key>commands</key>
+        <dict>
+            <key>captures</key>
+            <dict>
+                <key>1</key>
+                <dict>
+                    <key>name</key>
+                    <string>keyword.command.tcl</string>
+                </dict>
+            </dict>
+            <key>match</key>
+            <string>(?&lt;=^|[\[{;])\s*(addNewCommand|algorithm|analysis|analyze|block2d|block2D|block3d|block3D|constraints|database|eigen|element|equalDOF|fiber|fix|fixX|fixY|fixZ|geomTransf|getTime|groundMotion|imposedMotion|integrator|layer|load|loadConst|mass|model|nDMaterial|node|nodeDisp|numberer|patch|pattern|plasticMaterial|play|print|recorder|reset|rigidDiaphragm|rigidLink|section|sp|system|test|timeSeries|uniaxialMaterial|updateMaterialStage|wipe|wipeAnalysis|yieldSurface_BC|ysEvolutionModel)\b</string>
+        </dict>
+        <key>subcommands</key>
+        <dict>
+            <key>captures</key>
+            <dict>
+                <key>1</key>
+                <dict>
+                    <key>name</key>
+                    <string>keyword.subcommand.tcl</string>
+                </dict>
+            </dict>
+            <key>match</key>
+            <string>(?&lt;=^|[\[{;])\s*(ArcLength|BandGeneral|BandSPD|bbarBrick|bbarQuad|beamWithHinges|BFGS|Bidirectional|Bond01|Bond02|Broyden|circ|circ|Concrete01|Concrete02|Concrete03|Corotational|corotTruss|dispBeamColumn|DisplacementControl|display|Drift|Elastic|Elastic|elasticBeamColumn|ElasticIsotropic|ElasticMembranePlateSection|ElasticPP|ElasticPPGap|EnergyIncr|enhancedQuad|ENT|Fiber|Hardening|HHT|Hysteretic|J2Plasticity|KrylovNewton|Lagrange|Linear|Linear|LoadControl|method|MinUnbalDispNorm|ModifiedNewton|MultipleSupport|Newmark|Newton|NewtonLineSearch|nonlinearBeamColumn|NormDispIncr|NormUnbalance|PDelta|Penalty|Plain|Plain|Plain|PlaneStress|PlateFiber|PlateFiber|plot|ProfileSPD|quad|quad|RCM|ShellMITC4|SparseGeneral|SparseSPD|Static|stdBrick|Steel01|Steel02|straight|Transformation|Transient|truss|UmfPack|Uniaxial|UniformExcitation|VariableTransient|Viscous|zeroLengthND|zeroLengthSection)\b</string>
+        </dict>
+    </dict>
     <key>uuid</key>
     <string>C8B007C5-D4EC-48B0-AEC6-ACCF1DA71DC1</string>
 </dict>
