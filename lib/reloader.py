@@ -11,6 +11,7 @@ for mod in sys.modules:
 # define order of dependencies for proper reloading
 mods_load_order = [
     "lib",
+    "lib.helpers",
 
     "commands"
 ]
