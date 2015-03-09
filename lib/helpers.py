@@ -1,8 +1,8 @@
 import sublime, sublime_plugin
 import os
-import shutil
 import re
 import Default
+from distutils import spawn
 
 
 class Settings(object):
@@ -44,6 +44,9 @@ def save_all_views(window, path):
         fname = view.file_name()
         if (fname and view.is_dirty() and os.path.exists(fname) and norm_path(fname).startswith(norm_path(path))):
             view.run_command("save")
+
+def which(path):
+    return spawn.find_executable(path)
 
 def cpu_count():
     # Linux, Unix and MacOS:
@@ -132,13 +135,13 @@ class RunBase(sublime_plugin.WindowCommand):
         return path
     def get_cmd(self, name, basename, command):
         executable = Settings.get(self.get_exe_setting_name())
-        if shutil.which(executable) is None:
+        if which(executable) is None:
             command.run_message("%s executable \"%s\" was not found, make sure it is installed." % (name, executable))
             return None
         cmd = "%s %s" % (executable, basename)
         if self.is_parallel():
             mpiexec = Settings.get("mpiexec")
-            if shutil.which(mpiexec) is None:
+            if which(mpiexec) is None:
                 command.run_message("MPI executable for %s \"%s\" was not found, make sure it is installed." % (name, mpiexec))
                 return None
             max_processor_count = cpu_count()
