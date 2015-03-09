@@ -143,7 +143,7 @@ class RunBase(sublime_plugin.WindowCommand):
         if which(executable) is None:
             command.run_message("%s executable \"%s\" was not found, make sure it is installed." % (name, executable))
             return None
-        cmd = "%s %s" % (executable, basename)
+        cmd = "\"%s\" \"%s\"" % (executable, basename)
         if self.is_parallel():
             mpiexec = Settings.get("mpiexec")
             if which(mpiexec) is None:
@@ -156,7 +156,7 @@ class RunBase(sublime_plugin.WindowCommand):
                     raise Exception("Processor count not in valid range")
             except Exception:
                 processor_count = max_processor_count
-            cmd = "%s -np %s " % (mpiexec, processor_count) + cmd
+            cmd = "\"%s\" -np %s " % (mpiexec, processor_count) + cmd
         return cmd
     def get_name(self):
         raise NotImplementedError("Should have implemented \"get_name(self)\" method.")
