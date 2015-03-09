@@ -1,6 +1,7 @@
 import sublime, sublime_plugin
 import os
 import re
+import sys
 import Default
 from distutils import spawn
 
@@ -91,7 +92,11 @@ class OnDoneExecCommand(Default.exec.ExecCommand):
         return self.proc.proc
     # custom method
     def run_message(self, message):
-        self.run(shell_cmd = ":: [%s] %s" % (self.display_name, message))
+        if sys.platform == "win32":
+            comment = "::"
+        else:
+            comment = "#"
+        self.run(shell_cmd = "%s [%s] %s" % (comment, self.display_name, message))
         self.append_string(self.proc, message)
     # custom method
     def run_callbacks(self):
