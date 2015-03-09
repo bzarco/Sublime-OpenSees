@@ -1,4 +1,10 @@
 {
 	// extensions to use this package with (automatically open with OpenSees syntax definition)
-    "extensions": ["tcl"]
+    "extensions": ["tcl"],
+
+    // opensees executables directory (helper variable to use in executables paths below)
+    "opensees_dir": "${userprofile}/OpenSees",
+
+    // opensees sequential interpreter
+    "opensees": "${opensees_dir}/OpenSees",
 }

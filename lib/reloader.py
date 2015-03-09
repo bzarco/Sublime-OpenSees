@@ -13,7 +13,8 @@ mods_load_order = [
     "lib",
     "lib.helpers",
 
-    "commands"
+    "commands",
+    "commands.run_sequential"
 ]
 
 # reload modules in order if they were present

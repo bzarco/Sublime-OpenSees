@@ -1,0 +1,4 @@
+{
+    "selector": "source.tcl.opensees",
+    "target": "run_sequential"
+}
