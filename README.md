@@ -1,12 +1,14 @@
 # OpenSees
 
-OpenSees is a simple plug-in for Sublime Text adding syntax highlighting, code completion, etc for the [OpenSees][opensees] extension language of [Tcl][tcl] (.tcl).
+OpenSees is a simple plug-in for Sublime Text adding syntax highlighting, code completion, build commands, etc for the [OpenSees][opensees] extension language of [Tcl][tcl] (.tcl).
 
 ## Jump to Section
 
 - [Features](#features)
+- [Requirements](#requirements)
 - [Installation](#installation)
 - [Updating](#updating)
+- [Usage](#usage)
 - [Support](#support)
 - [License](#license)
 
@@ -14,6 +16,34 @@ OpenSees is a simple plug-in for Sublime Text adding syntax highlighting, code c
 
 - Support for OpenSees syntax, in addition to Tcl syntax (using default Tcl package)
 - Command completion for some Tcl commands (using default Tcl package snippets)
+- Run OpenSees scripts (.tcl) using Sequential interpreter.
+
+## Requirements
+
+If first time downloading OpenSees, you will need to [register][openseesRegister] to message board.
+
+#### Windows
+
+- Tcl
+    1. Download Tcl from [OpenSees download website][openseesDownload] in order to have compatible version with OpenSees (may need to uninstall previous versions)
+    2. Install Tcl (need to change installation path from `C:/Tcl` to `C:/Program Files/Tcl`)
+- OpenSees
+    1. Download OpenSees from [OpenSees download website][openseesDownload]
+    3. Locate `OpenSees.exe` in a convenient directory (plug-in settings uses `%userprofile%/OpenSees/` as default, but it can be [changed](#configuration))
+
+#### Mac OS X
+
+- Tcl
+    1. Tcl will most likely be already installed, check current versions to make sure it is compatible with OpenSees (Open `Terminal`, type `tclsh` and then `puts $tcl_version`)
+    2. Download Tcl from [OpenSees download website][openseesDownload] in order to have compatible version with OpenSees (may need to uninstall previous versions)
+    3. Install Tcl
+- OpenSees
+    1. Download OpenSees from [OpenSees download website][openseesDownload]
+    3. Locate `OpenSees` executable in a convenient directory (plug-in settings uses `~/OpenSees/` as default, but it can be [changed](#configuration))
+
+#### Linux
+
+TODO
 
 ## Installation
 
@@ -36,6 +66,32 @@ For all Sublime Text users it is recommend to install via [Package Control][pack
 
 - If you are using Package Control, updating will be automatic and you don't have to worry about it.
 - If using Manual Install, repeat steps [above](#manual-install) and replace `OpenSees.sublime-package` with the new downloaded one.
+
+## Usage
+
+#### Running scripts
+
+- With a .tcl script open, press `ctrl+b` (Win, Linux) or `cmd+b` (OS X) to run Sequential interpreter
+- This option is also available using the menu bar: `Tools > Build`
+
+#### Configuration
+
+Setting files are parsed with the following priority:
+
+1. Project Settings (.sublime-project, needs to be created/opened using `Project > Save Project As...` and `Project > Open Project`)
+2. User Settings (see below)
+3. Default Settings (see below)
+
+User and Default settings can be found using Sublime Text menu: `Preferences > Package Settings > OpenSees`
+
+- `Settings - User` is where you change your settings for OpenSees (**make sure you change this file for configuration to persists when plug-in updated**).
+- `Settings - Default` is a good reference with detailed descriptions for each setting (**do not modify this file, use User settings for overriding**).
+
+Some important features about the Settings in this plug-in:
+
+- Any string containing `${<var>}` will be expanded to the operating system's enviroment variable (if exists)
+- `${<var>}` can also reference to any setting defined in any of the settings files, using `.` separation for accessing nested settings (e.g. `${test.setting}`)
+- Settings can be platform specific. Rather than specifying a string path to use, a dictionary is specified. This dictionary may contain the following keys: `windows`, `linux`, and `osx`
 
 ## Support
 
@@ -71,6 +127,8 @@ THE SOFTWARE.
 [home]: https://github.com/bzarco/Sublime-OpenSees "Home"
 [opensees]: http://opensees.berkeley.edu "OpenSees"
 [tcl]: http://www.tcl.tk/ "Tcl"
+[openseesDownload]: http://opensees.berkeley.edu/OpenSees/user/download.php "OpenSees Download"
+[openseesRegister]: http://opensees.berkeley.edu/community/ucp.php?mode=register "OpenSees Register"
 [packageControl]: https://packagecontrol.io "Package Control"
 [packageControlInstallation]: https://packagecontrol.io "Package Control Installation"
 [zipPackage]: https://github.com/bzarco/Sublime-OpenSees/archive/master.zip "Zip Package"
