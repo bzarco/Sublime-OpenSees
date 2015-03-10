@@ -5,6 +5,8 @@ import Default
 from distutils import spawn
 
 
+PLATFORM = sublime.platform()
+
 class Settings(object):
     @staticmethod
     def get(key):
@@ -24,6 +26,8 @@ class Settings(object):
     def _replace_references(setting):
         r_lambda = lambda token: re.compile(r"\${" + token + "}")
         if isinstance(setting, dict):
+            if PLATFORM in setting:
+                return Settings._replace_references(setting[PLATFORM])
             for k, v in setting.items():
                 setting[k] = Settings._replace_references(v)
         if isinstance(setting, list):
@@ -91,7 +95,7 @@ class OnDoneExecCommand(Default.exec.ExecCommand):
         return self.proc.proc
     # custom method
     def run_message(self, message):
-        comment = "::" if sublime.platform() == "windows" else "#"
+        comment = "::" if PLATFORM == "windows" else "#"
         self.run(shell_cmd = "%s [%s] %s" % (comment, self.display_name, message))
         self.append_string(self.proc, message)
     # custom method
