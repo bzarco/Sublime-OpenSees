@@ -3,7 +3,11 @@
     "extensions": ["tcl"],
 
     // opensees executables directory (helper variable to use in executables paths below)
-    "opensees_dir": "${userprofile}/OpenSees",
+    "opensees_dir": {
+        "windows": "${userprofile}/OpenSees",
+        "osx": "~/OpenSees",
+        "linux": "${opensees_dir.osx}"
+    },
 
     // opensees sequential interpreter
     "opensees": "${opensees_dir}/OpenSees",
