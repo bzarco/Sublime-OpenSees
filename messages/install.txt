@@ -1,0 +1,5 @@
+Welcome to OpenSees Sublime Text Package!
+
+You can now edit OpenSees .tcl scripts, run them from the editor and get code completion and syntax highlighting!
+
+For more information see the README here: https://github.com/bzarco/Sublime-OpenSees
