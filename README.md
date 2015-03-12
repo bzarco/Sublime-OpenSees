@@ -16,7 +16,7 @@ OpenSees is a simple plug-in for Sublime Text adding syntax highlighting, code c
 
 - Support for OpenSees syntax, in addition to Tcl syntax (using default Tcl package)
 - Command completion for some Tcl commands (using default Tcl package snippets)
-- Run OpenSees scripts (.tcl) using Sequential interpreter (without exiting Sublime nor needing command window).
+- Run OpenSees scripts (.tcl) using Sequential interpreter without leaving Sublime.
 
 ## Requirements
 
@@ -27,6 +27,7 @@ If first time downloading OpenSees, you will need to [register][openseesRegister
 - Tcl
     1. Download Tcl from [OpenSees download website][openseesDownload] in order to have compatible version with OpenSees (may need to uninstall previous versions)
     2. Install Tcl (need to change installation path from `C:/Tcl` to `C:/Program Files/Tcl`)
+    3. If Sublime Text was running while installing Tcl, it needs to be restarted in order for the plugin to work
 - OpenSees
     1. Download OpenSees from [OpenSees download website][openseesDownload]
     3. Locate `OpenSees.exe` in a convenient directory (plug-in settings uses `%userprofile%/OpenSees/` as default, but it can be [changed](#configuration))
@@ -37,6 +38,7 @@ If first time downloading OpenSees, you will need to [register][openseesRegister
     1. Tcl will most likely be already installed, check current versions to make sure it is compatible with OpenSees (Open `Terminal`, type `tclsh` and then `puts $tcl_version`)
     2. Download Tcl from [OpenSees download website][openseesDownload] in order to have compatible version with OpenSees (may need to uninstall previous versions)
     3. Install Tcl
+    4. If Sublime Text was running while installing Tcl, it needs to be restarted in order for the plugin to work
 - OpenSees
     1. Download OpenSees from [OpenSees download website][openseesDownload]
     3. Locate `OpenSees` executable in a convenient directory (plug-in settings uses `~/OpenSees/` as default, but it can be [changed](#configuration))
@@ -68,6 +70,8 @@ For all Sublime Text users it is recommend to install via [Package Control][pack
 - If using Manual Install, repeat steps [above](#manual-install) and replace `OpenSees.sublime-package` with the new downloaded one.
 
 ## Usage
+
+First, make sure [Installation](#installation) steps were completed for your operating system.
 
 #### Running scripts
 
