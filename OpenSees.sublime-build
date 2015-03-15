@@ -1,4 +1,14 @@
 {
     "selector": "source.tcl.opensees",
-    "target": "run_sequential"
+    "target": "run_sequential",
+    "variants": [
+        {
+            "name": "Single Parallel",
+            "target": "run_single_parallel"
+        },
+        {
+            "name": "Multiple Parallel",
+            "target": "run_multiple_parallel"
+        }
+    ]
 }

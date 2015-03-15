@@ -11,4 +11,20 @@
 
     // opensees sequential interpreter
     "opensees": "${opensees_dir}/OpenSees",
+
+    // opensees single parallel interpreter
+    "opensees_sp": "${opensees_dir}/OpenSeesSP",
+
+    // opensees multiple parallel interpreter
+    "opensees_mp": "${opensees_dir}/OpenSeesMP",
+
+    // mpiexec executable location, neccessary to run parallel interpreters
+    "mpiexec": {
+        "windows": "${programfiles}/MPICH2/bin/mpiexec",
+        "osx": "mpiexec",
+        "linux": "${mpiexec.osx}"
+    },
+
+    // number of processors to use in parallel interpreters (use "MAX" for all available), if input is more than available or incorrect, MAX will be used
+    "processor_count": "MAX"
 }

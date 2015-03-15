@@ -1,6 +1,7 @@
 import sublime, sublime_plugin
 import os
 import re
+import subprocess
 import Default
 from distutils import spawn
 
@@ -62,7 +63,7 @@ def cpu_count():
         else:
             return int(os.popen2("sysctl -n hw.ncpu")[1].read())
     # Windows:
-    if os.environ.has_key("NUMBER_OF_PROCESSORS"):
+    if "NUMBER_OF_PROCESSORS" in os.environ:
         ncpus = int(os.environ["NUMBER_OF_PROCESSORS"]);
         if ncpus > 0:
             return ncpus
@@ -87,9 +88,9 @@ class OnDoneExecCommand(Default.exec.ExecCommand):
         if isinstance(self.stdout, list):
             self.stdout.append(str)
     # overriden from ExecCommand
-    def finish(self, proc):
-        super().finish(proc)
-        sublime.set_timeout(self.run_callbacks, 0)
+    def on_finished(self, proc):
+        self.run_callbacks()
+        super().on_finished(proc)
     # custom method
     def popen(self):
         return self.proc.proc
@@ -145,7 +146,7 @@ class RunBase(sublime_plugin.WindowCommand):
             return None
         cmd = "\"%s\" \"%s\"" % (executable, basename)
         if self.is_parallel():
-            mpiexec = Settings.get("mpiexec")
+            mpiexec = os.path.normpath(Settings.get("mpiexec"))
             if which(mpiexec) is None:
                 command.run_message("MPI executable for %s \"%s\" was not found, make sure it is installed." % (name, mpiexec))
                 return None
@@ -156,7 +157,30 @@ class RunBase(sublime_plugin.WindowCommand):
                     raise Exception("Processor count not in valid range")
             except Exception:
                 processor_count = max_processor_count
-            cmd = "\"%s\" -np %s " % (mpiexec, processor_count) + cmd
+            if PLATFORM == "windows":
+                args = "-noprompt"
+                smpd = os.path.join(os.path.dirname(mpiexec), "smpd")
+                try:
+                    if not subprocess.check_output("\"%s\" -status" % smpd, shell=True).startswith(b"smpd running"):
+                        raise subprocess.CalledProcessError(-1, "smpd -status")
+                    is_mpiexec_valid = lambda: subprocess.check_output("\"%s\" -validate" % mpiexec, shell=True).startswith(b"SUCCESS")
+                    if not is_mpiexec_valid():
+                        messages = [
+                            "MPICH2 needs a username and password (same account as windows)",
+                            "Running command:",
+                            "    \"%s\" -register" % mpiexec
+                        ]
+                        subprocess.call("start /wait cmd /c \"echo %s & echo. & \"%s\" -register\"" % (" & echo ".join(messages), mpiexec), shell=True)
+                        if not is_mpiexec_valid():
+                            command.run_message("MPICH2 account registration unsuccessful, need to run script again or the following from a command prompt:\n\t\"%s\" -register" % mpiexec)
+                            return None
+                except subprocess.CalledProcessError:
+                    command.run_message("MPICH2 service \"smpd\" is not running, need to run the following from an administrator command prompt:\n\t\"%s\" -start" % smpd)
+                    return None
+            else:
+                #TODO: test linux and mac os x and see if there is anything special todo
+                args = ""
+            cmd = "\"%s\" %s -np %s " % (mpiexec, args, processor_count) + cmd
         return cmd
     def get_name(self):
         raise NotImplementedError("Should have implemented \"get_name(self)\" method.")

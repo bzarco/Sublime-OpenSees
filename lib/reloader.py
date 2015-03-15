@@ -14,7 +14,9 @@ mods_load_order = [
     "lib.helpers",
 
     "commands",
-    "commands.run_sequential"
+    "commands.run_sequential",
+    "commands.run_single_parallel",
+    "commands.run_multiple_parallel"
 ]
 
 # reload modules in order if they were present
