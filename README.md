@@ -132,7 +132,7 @@ Some important features about the Settings in this plug-in:
 
 All of the source code is available at github [project][home] under the MIT licence:
 ```
-Copyright (c) 2015 Borja Zarco <borja@bzarco.com>
+Copyright (c) 2016 Borja Zarco <borja@bzarco.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
